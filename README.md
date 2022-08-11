@@ -1,3 +1,4 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f4822cd40df14560a71a8073c0c3fd88)](https://www.codacy.com/gh/armerillo/ql-task/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=armerillo/ql-task&amp;utm_campaign=Badge_Grade)
 # Backend Assessment
 
 Build and deploy a very simple API that does the following
