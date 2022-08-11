@@ -1,5 +1,7 @@
 # Backend Assessment
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/842739cb5a7d4eda9413d58a02f44372)](https://app.codacy.com/gh/armerillo/ql-task?utm_source=github.com&utm_medium=referral&utm_content=armerillo/ql-task&utm_campaign=Badge_Grade_Settings)
+
 Build and deploy a very simple API that does the following
 
 1.  Calculate and return the age of a person, given their date of birth (dob) as query parameters to `GET /howold`
