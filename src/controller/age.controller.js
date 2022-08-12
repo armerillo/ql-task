@@ -20,7 +20,7 @@ router.get("/howold", async (req, res) => {
     return res
   }
   
-   const age = today.getFullYear() - birthDate.getFullYear();
+  const age = today.getFullYear() - birthDate.getFullYear();
   if (age < 0) {
      return res.status(400).json({
        error: `Birth year cannot be greater than the current year ${today.getFullYear()}`
