@@ -3,7 +3,7 @@ const { MemoryStore } = require("express-rate-limit");
  
 
 const limiter = rateLimit({
-  windowMs: 1 * 60 * 1000,
+  windowMs: 1000,
   max: 3,
   //message: "Your limit exceeded",
   standardHeaders: true,
