@@ -24,8 +24,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
 // Set security headers
 app.use(helmet());
 
@@ -37,14 +35,14 @@ app.use(hpp());
 
 
 const limiter = rateLimit({
-  windowMs: 10000,
+  windowMs:1 * 60 * 1000,
   max: 3,
   //message: "Your limit exceeded",
   standardHeaders: true,
   legacyHeaders: false,
   handler: function (req, res) {
     return res.status(429).json({
-      error: "You sent too many requests. Please wait a while then try again",
+      error: "You sent too many requests. Please try again later",
     });
   },
 });
