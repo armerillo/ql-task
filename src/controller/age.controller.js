@@ -6,7 +6,7 @@ const limiter = require("../middleware/rateLimiter");
  * @returns {number}
  */
 
-router.get("/howold",limiter, async (req, res) => {
+router.get("/howold", limiter, async (req, res) => {
   
   const { dob } = req.query;
   

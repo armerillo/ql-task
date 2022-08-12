@@ -78,17 +78,14 @@ app.use("*", (req, res, next) => {
 
 
 
-process.on("uncaughtException", (err) => {
-
+process.on("uncaughtException", () => {
   process.exit(0);
 });
 
-process.on("uncaughtExceptionMonitor", (err) => {
-      console.log(err);
-
+process.on("uncaughtExceptionMonitor", () => {
   process.exit(0);
 });
-process.on("unhandledRejection", (err) => {
+process.on("unhandledRejection", () => {
   process.exit(0);
 });
 
