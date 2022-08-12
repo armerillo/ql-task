@@ -1,6 +1,6 @@
 const cluster = require("cluster");
 const { cpus } = require("os");
-const app = require ("./app");
+const app = require("./app");
 
 
 
