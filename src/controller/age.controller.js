@@ -14,17 +14,17 @@ router.get("/howold", async (req, res) => {
     });
   }
 
-   const today = new Date();
+  const today = new Date();
   const birthDate = new Date(dob);
-   if (birthDate == "Invalid Date") {
-    return res.status(400).json({ error: "Only date format yyyy-mm-dd is allowed" });
-   }
+  if (birthDate == "Invalid Date") {
+    return res
+  }
   
-   const age = today.getFullYear() - birthDate.getFullYear();
-   if (age < 0) {
-     return res.status(400).json({
-       error: `Birth year cannot be greater than the current year ${today.getFullYear()}`
-     });
+  const age = today.getFullYear() - birthDate.getFullYear();
+  if (age < 0) {
+    return res.status(400).json({
+      error: `Birth year cannot be greater than the current year ${today.getFullYear()}`,
+    });
    }
   return res.status(200).json({
     success: true,
