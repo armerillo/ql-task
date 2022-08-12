@@ -1,14 +1,15 @@
 const { Router } = require("express");
 const router = Router();
-const limiter = require("../middleware/rateLimiter");
+
 /**
  * @description Calculate user age
  * @returns {number}
  */
 
-router.get("/howold", limiter, async (req, res) => {
+router.get("/howold", async (req, res) => {
+  
   const { dob } = req.query;
-
+  
   if (!dob || dob == "") {
     return res.status(400).json({
       error: "Please provide a date of birth",
