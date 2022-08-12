@@ -5,7 +5,7 @@ const helmet =require("helmet") ;
 const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit") ;
 const hpp = require("hpp");
-const router = require ("./controller/age.controller");
+const router = require("./controller/age.controller");
 dotenv.config();
 
 
