@@ -1,12 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
-<<<<<<< HEAD
 const cors = require("cors");
 const helmet = require("helmet");
-=======
-const cors =require( "cors");
-const helmet =require("helmet") ;
->>>>>>> be8bec31c1549596ac3986879824453013e82c11
 const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
