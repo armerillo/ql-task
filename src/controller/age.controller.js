@@ -24,7 +24,7 @@ router.get("/howold", async (req, res) => {
   if (age < 0) {
      return res.status(400).json({
        error: `Birth year cannot be greater than the current year ${today.getFullYear()}`
-     });
+    });
    }
   return res.status(200).json({
     success: true,
