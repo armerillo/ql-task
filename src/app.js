@@ -60,8 +60,6 @@ app.use("*", (req, res, next) => {
   next();
 });
 
-
-
 process.on("uncaughtException", () => {
   process.exit(0);
 });
@@ -72,7 +70,5 @@ process.on("uncaughtExceptionMonitor", () => {
 process.on("unhandledRejection", () => {
   process.exit(0);
 });
-
-
 
 module.exports =  app;
