@@ -1,9 +1,8 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const cors =require( "cors");
-const helmet =require("helmet") ;
+const cors = require("cors");
+const helmet = require("helmet");
 const xss = require("xss-clean");
-const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
 const router = require("./controller/age.controller");
 dotenv.config();
@@ -35,27 +34,7 @@ app.use(xss());
 // Prevent http param pollution
 app.use(hpp());
 
-// Rate limiting
-let limiter;
-if (process.env.NODE_ENV === "development") {
-  limiter = rateLimit({
-    windowMs: 1 * 60 * 1000, // 1 minute
-    max: 3, // limit each IP to 3 requests per windowMs
-    message: "Your limit exceeded",
-    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-  });
-} else {
-  limiter = rateLimit({
-    windowMs: 1000, // 1 second
-    max: 3, // limit each IP to 3 requests per windowMs
-    message: "Your limit exceeded",
-    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-  });
-}
 
-app.use(limiter);
 
 // Parse incoming requests data
 app.use((req, res, next) => {
