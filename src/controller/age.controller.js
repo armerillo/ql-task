@@ -16,7 +16,7 @@ router.get("/howold", async (req, res) => {
 
   const today = new Date();
   const birthDate = new Date(dob);
-   if (birthDate == "Invalid Date") {
+  if (birthDate == "Invalid Date") {
     return res
   }
   
