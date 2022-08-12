@@ -2,7 +2,6 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const helmet = require("helmet");
-//const rateLimit = require("express-rate-limit");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const router = require("./controller/age.controller");
@@ -33,21 +32,6 @@ app.use(xss());
 // Prevent http param pollution
 app.use(hpp());
 
-
-// const limiter = rateLimit({
-//   windowMs:1 * 60 * 1000,
-//   max: 2,
-//   //message: "Your limit exceeded",
-//   standardHeaders: true,
-//   legacyHeaders: false,
-//   handler: function (req, res) {
-//     return res.status(429).json({
-//       error: "You sent too many requests. Please try again later",
-//     });
-//   },
-// });
-
-// app.use(limiter);
 
 // Parse incoming requests data
 app.use((req, res, next) => {
