@@ -37,7 +37,7 @@ app.use(hpp());
 
 
 const limiter = rateLimit({
-  windowMs: 5000,
+  windowMs: 10000,
   max: 3,
   //message: "Your limit exceeded",
   standardHeaders: true,
