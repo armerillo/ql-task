@@ -1,12 +1,18 @@
-// const rateLimit = require("express-rate-limit");
+const rateLimit = require("express-rate-limit");
 
-// const limiter = rateLimit({
-//     windowMs: 1000,
-//     max: 3,
-//     message: "Your limit exceeded",
-//     standardHeaders: true,
-//     legacyHeaders: false,
-// });
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 3,
+  //message: "Your limit exceeded",
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: function (req, res) {
+    return res.status(429).json({
+      error: "You sent too many requests. Please try again later",
+    });
+  },
+});
 
 
-// module.exports = limiter;
+
+module.exports = limiter;

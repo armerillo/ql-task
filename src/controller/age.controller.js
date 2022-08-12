@@ -1,12 +1,12 @@
 const { Router } = require("express");
 const router = Router();
-
+const limiter = require("../middleware/rateLimiter");
 /**
  * @description Calculate user age
  * @returns {number}
  */
 
-router.get("/howold", async (req, res) => {
+router.get("/howold",limiter, async (req, res) => {
   
   const { dob } = req.query;
   
