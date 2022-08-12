@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const helmet = require("helmet");
+//const rateLimit = require("express-rate-limit");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const router = require("./controller/age.controller");
@@ -23,8 +24,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
 // Set security headers
 app.use(helmet());
 
@@ -35,6 +34,20 @@ app.use(xss());
 app.use(hpp());
 
 
+// const limiter = rateLimit({
+//   windowMs:1 * 60 * 1000,
+//   max: 2,
+//   //message: "Your limit exceeded",
+//   standardHeaders: true,
+//   legacyHeaders: false,
+//   handler: function (req, res) {
+//     return res.status(429).json({
+//       error: "You sent too many requests. Please try again later",
+//     });
+//   },
+// });
+
+// app.use(limiter);
 
 // Parse incoming requests data
 app.use((req, res, next) => {
@@ -65,14 +78,14 @@ app.use("*", (req, res, next) => {
 
 
 
-process.on("uncaughtException", (err) => {
+process.on("uncaughtException", () => {
   process.exit(0);
 });
 
-process.on("uncaughtExceptionMonitor", (err, origin) => {
+process.on("uncaughtExceptionMonitor", () => {
   process.exit(0);
 });
-process.on("unhandledRejection", (err) => {
+process.on("unhandledRejection", () => {
   process.exit(0);
 });
 

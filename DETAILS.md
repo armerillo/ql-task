@@ -17,3 +17,9 @@ For example, to get the age of a person born on `2000-03-20`, you would send a G
     }
     }
 ```
+
+3.  To run locally, you can run the following command:
+```git clone https://github.com/armerillo/ql-task.git```  and then run the following command:
+```cd ql-task```,
+```npm install```,
+```npm run dev```

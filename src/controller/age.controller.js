@@ -7,8 +7,9 @@ const limiter = require("../middleware/rateLimiter");
  */
 
 router.get("/howold", limiter, async (req, res) => {
+  
   const { dob } = req.query;
-
+  
   if (!dob || dob == "") {
     return res.status(400).json({
       error: "Please provide a date of birth",
