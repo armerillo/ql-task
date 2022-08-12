@@ -3,7 +3,7 @@ const dotenv =require("dotenv") ;
 const cors =require( "cors");
 const helmet =require("helmet") ;
 const xss = require("xss-clean");
-const rateLimit = require("express-rate-limit") ;
+const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
 const router = require("./controller/age.controller");
 dotenv.config();
