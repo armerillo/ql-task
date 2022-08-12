@@ -18,7 +18,7 @@ router.get("/howold", async (req, res) => {
   const birthDate = new Date(dob);
    if (birthDate == "Invalid Date") {
     return res.status(400).json({ error: "Only date format yyyy-mm-dd is allowed" });
-   }
+  }
   
    const age = today.getFullYear() - birthDate.getFullYear();
   if (age < 0) {
