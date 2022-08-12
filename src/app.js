@@ -4,7 +4,8 @@ const cors =require( "cors");
 const helmet =require("helmet") ;
 const xss =require("xss-clean") ;
 const rateLimit = require("express-rate-limit") ;
-const hpp =require("hpp") ;
+const hpp = require("hpp");
+const errorMiddleware = require("./middleware/error.middleware");
 const router = require ("./controller/age.controller");
 dotenv.config();
 
@@ -39,8 +40,8 @@ app.use(hpp());
 let limiter;
 if (process.env.NODE_ENV === "development") {
   limiter = rateLimit({
-    windowMs: 10 * 60 * 1000, // 10 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
+    windowMs: 1 * 60 * 1000, // 1 minute
+    max: 3, // limit each IP to 100 requests per windowMs
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   });
@@ -72,7 +73,7 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: true }));
 
 // base api
-app.use("/api/v1", router);
+app.use("/", router);
 
 // CATCH ALL INVALID ROUTES
 app.use("*", (req, res, next) => {
@@ -82,6 +83,8 @@ app.use("*", (req, res, next) => {
   next();
 });
 
+// Middleware to handle errors
+app.use(errorMiddleware);
 
 process.on("uncaughtException", (err) => {
   process.exit(0);

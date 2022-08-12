@@ -1,16 +1,39 @@
 const { Router } = require("express");
 const router = Router();
-
-
+const calculateAge = require("../utils/calculateAge").default;
 /**
  * @description Calculate user age
  * @returns {number}
  */
 
-
 router.get("/howold", async (req, res) => {
-  return res.json({ message: "Welcome" });
-});
+  const { dob } = req.query;
 
+  /*if (!dob || dob == "") {
+    return res.status(400).json({
+      error: "Please provide a date of birth",
+    });
+  }
+
+   const today = new Date();
+  const birthDate = new Date(dob);
+   if (birthDate == "Invalid Date") {
+    return res.status(400).json({ error: "Only date format yyyy-mm-dd is allowed" });
+   }
+  
+   const age = today.getFullYear() - birthDate.getFullYear();
+   if (age < 0) {
+     return res.status(400).json({
+       error: `Birth year cannot be greater than the current year ${today.getFullYear()}`
+     });
+   }*/
+  const age = await calculateAge(dob);
+  return res.status(200).json({
+    status: "success",
+    data: {
+      age,
+    },
+  });
+});
 
 module.exports = router;
