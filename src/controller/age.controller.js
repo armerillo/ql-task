@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const router = Router();
-const calculateAge = require("../utils/calculateAge").default;
 /**
  * @description Calculate user age
  * @returns {number}
@@ -9,7 +8,7 @@ const calculateAge = require("../utils/calculateAge").default;
 router.get("/howold", async (req, res) => {
   const { dob } = req.query;
 
-  /*if (!dob || dob == "") {
+  if (!dob || dob == "") {
     return res.status(400).json({
       error: "Please provide a date of birth",
     });
@@ -26,10 +25,9 @@ router.get("/howold", async (req, res) => {
      return res.status(400).json({
        error: `Birth year cannot be greater than the current year ${today.getFullYear()}`
      });
-   }*/
-  const age = await calculateAge(dob);
+   }
   return res.status(200).json({
-    status: "success",
+    success: true,
     data: {
       age,
     },

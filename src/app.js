@@ -5,7 +5,6 @@ const helmet =require("helmet") ;
 const xss =require("xss-clean") ;
 const rateLimit = require("express-rate-limit") ;
 const hpp = require("hpp");
-const errorMiddleware = require("./middleware/error.middleware");
 const router = require ("./controller/age.controller");
 dotenv.config();
 
@@ -41,14 +40,16 @@ let limiter;
 if (process.env.NODE_ENV === "development") {
   limiter = rateLimit({
     windowMs: 1 * 60 * 1000, // 1 minute
-    max: 3, // limit each IP to 100 requests per windowMs
+    max: 3, // limit each IP to 3 requests per windowMs
+    message: "Your limit exceeded",
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   });
 } else {
   limiter = rateLimit({
-    windowMs: 10 * 60 * 1000, // 10 mins
-    max: 10, // Limit each IP to 10 requests per `window` (here, per 10 minutes)
+    windowMs: 1000, // 1 second
+    max: 3, // limit each IP to 3 requests per windowMs
+    message: "Your limit exceeded",
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   });
@@ -83,8 +84,7 @@ app.use("*", (req, res, next) => {
   next();
 });
 
-// Middleware to handle errors
-app.use(errorMiddleware);
+
 
 process.on("uncaughtException", (err) => {
   process.exit(0);
