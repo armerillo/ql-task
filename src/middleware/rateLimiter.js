@@ -11,7 +11,7 @@ const limiter = rateLimit({
       error: "You sent too many requests. Please try again later",
     });
     },
-  	store: new MemoryStore(),
+store: new MemoryStore(),
 });
 
 module.exports = limiter;
